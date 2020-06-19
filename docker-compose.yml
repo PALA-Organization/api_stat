@@ -1,0 +1,29 @@
+version: '3'
+services:
+    web:
+        build: .
+        container_name: 'jee_api_stat'
+        environment: 
+            - AUTHENTIFICATION_DATABASE=${AUTHENTIFICATION_DATABASE}
+            - DB_ROOT_USERNAME=${DB_ROOT_USERNAME}
+            - DB_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+            - DB_USERNAME=${DB_USERNAME}
+            - DB_PASSWORD=${DB_PASSWORD}
+            - DB_NAME=${DB_NAME}
+            - DB_PORT=${DB_PORT}
+            - DB_HOST=${DB_HOST}
+        ports:
+            - "${WEB_APP_PORT}:${WEB_APP_PORT}"
+        depends_on: 
+            - db
+    db:
+        image: 'mongo'
+        container_name: 'mongo_stat_api'
+        environment: 
+            - MONGO_INITDB_DATABASE=${AUTHENTIFICATION_DATABASE}
+            - MONGO_INITDB_ROOT_USERNAME=${DB_ROOT_USERNAME}
+            - MONGO_INITDB_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+        volumes:
+            - './database_user.js:/docker-entrypoint-initdb.d/database_user.js:ro'
+        ports: 
+            - "${DB_PORT}:${DB_PORT}"

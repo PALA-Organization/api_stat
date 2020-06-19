@@ -1,0 +1,12 @@
+#!/bin/bash
+
+unset AUTHENTIFICATION_DATABASE
+unset DB_ROOT_USERNAME
+unset DB_ROOT_PASSWORD
+unset DB_USERNAME
+unset DB_PASSWORD
+unset DB_NAME
+unset DB_PORT
+unset DB_HOST
+
+unset WEB_APP_PORT

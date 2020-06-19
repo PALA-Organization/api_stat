@@ -6,7 +6,6 @@ COPY . .
 
 RUN mvn package
 
-EXPOSE 8080
+EXPOSE ${WEB_APP_PORT}
 
 ENTRYPOINT ["java", "-jar", "/jee-server/target/server-last.jar"]
-

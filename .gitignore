@@ -56,3 +56,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Env script ###
+load_env.sh
+database_user.js

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+export AUTHENTIFICATION_DATABASE=
+export DB_ROOT_USERNAME=
+export DB_ROOT_PASSWORD=
+export DB_USERNAME=
+export DB_PASSWORD=
+export DB_NAME=
+export DB_PORT=
+export DB_HOST=
