@@ -3,6 +3,7 @@ services:
     web:
         build: .
         container_name: 'jee_api_stat'
+        restart: on-failure
         environment: 
             - AUTHENTIFICATION_DATABASE=${AUTHENTIFICATION_DATABASE}
             - DB_ROOT_USERNAME=${DB_ROOT_USERNAME}
@@ -12,6 +13,8 @@ services:
             - DB_NAME=${DB_NAME}
             - DB_PORT=${DB_PORT}
             - DB_HOST=${DB_HOST}
+        networks: 
+            - stat-api-network
         ports:
             - "${WEB_APP_PORT}:${WEB_APP_PORT}"
         depends_on: 
@@ -19,11 +22,22 @@ services:
     db:
         image: 'mongo'
         container_name: 'mongo_stat_api'
+        restart: on-failure
         environment: 
             - MONGO_INITDB_DATABASE=${AUTHENTIFICATION_DATABASE}
             - MONGO_INITDB_ROOT_USERNAME=${DB_ROOT_USERNAME}
             - MONGO_INITDB_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+        networks: 
+            - stat-api-network
         volumes:
             - './database_user.js:/docker-entrypoint-initdb.d/database_user.js:ro'
         ports: 
             - "${DB_PORT}:${DB_PORT}"
+        healthcheck:
+            test: echo 'db.runCommand("ping").ok' | mongo ${DB_HOST}:${DB_PORT}/test --quiet
+            interval: 10s
+            timeout: 10s
+            retries: 5
+networks:
+    stat-api-network:
+        driver: bridge 

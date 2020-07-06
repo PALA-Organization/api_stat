@@ -1,0 +1,104 @@
+[
+    {
+        "transaction_id": "1",
+        "type": "in",
+        "shop_name": "Sumbergebang",
+        "shop_address": "6 Holy Cross Center",
+        "date": "4/13/2020",
+        "amount": 50.00,
+        "description": "implement ubiquitous web-readiness"
+    }, 
+    {
+        "transaction_id": "2",
+        "type": "in",
+        "shop_name": "Lishu",
+        "shop_address": "39431 Fieldstone Junction",
+        "date": "7/29/2019",
+        "amount": 200.00,
+        "description": "reintermediate value-added bandwidth"
+    }, 
+    {
+        "transaction_id": "3",
+        "type": "out",
+        "shop_name": "Grytviken",
+        "shop_address": "62 Lake View Park",
+        "date": "11/16/2019",
+        "amount": 200.00,
+        "description": "repurpose clicks-and-mortar applications"
+    }, 
+    {
+        "transaction_id": "4",
+        "type": "out",
+        "shop_name": "Sabang",
+        "shop_address": "27 Badeau Drive",
+        "date": "11/18/2019",
+        "amount": 50.00,
+        "description": "transition clicks-and-mortar applications"
+    }, 
+    {
+        "transaction_id": "5",
+        "type": "in",
+        "shop_name": "Migori",
+        "shop_address": "2869 Maryland Place",
+        "date": "4/27/2020",
+        "amount": 200.00,
+        "description": "innovate impactful portals"
+    },
+
+    {
+        "transaction_id": "6",
+        "type": "in",
+        "shop_name": "Sumbergebang",
+        "shop_address": "6 Holy Cross Center",
+        "date": "4/13/2020",
+        "amount": 550.00,
+        "description": "implement ubiquitous web-readiness"
+    }, 
+    {
+        "transaction_id": "7",
+        "type": "in",
+        "shop_name": "Lishu",
+        "shop_address": "39431 Fieldstone Junction",
+        "date": "7/29/2019",
+        "amount": 950.00,
+        "description": "reintermediate value-added bandwidth"
+    },
+
+    {
+        "transaction_id": "8",
+        "type": "out",
+        "shop_name": "Sumbergebang",
+        "shop_address": "6 Holy Cross Center",
+        "date": "4/13/2020",
+        "amount": -200.00,
+        "description": "implement ubiquitous web-readiness"
+    },
+
+    {
+        "transaction_id": "9",
+        "type": "in",
+        "shop_name": "Sumbergebang",
+        "shop_address": "6 Holy Cross Center",
+        "date": "4/13/2020",
+        "amount": 50.00,
+        "description": "implement ubiquitous web-readiness"
+    },
+    {
+        "transaction_id": "10",
+        "type": "in",
+        "shop_name": "Sumbergebang",
+        "shop_address": "6 Holy Cross Center",
+        "date": "5/13/2020",
+        "amount": 50.00,
+        "description": "implement ubiquitous web-readiness"
+    }, 
+    {
+        "transaction_id": "11",
+        "type": "in",
+        "shop_name": "Sumbergebang",
+        "shop_address": "6 Holy Cross Center",
+        "date": "6/13/2020",
+        "amount": 50.00,
+        "description": "implement ubiquitous web-readiness"
+    }
+]

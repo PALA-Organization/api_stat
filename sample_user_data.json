@@ -1,0 +1,56 @@
+[
+    {
+        "user_id":"1",
+        "name":"Kathy",
+        "email":"kmoxsom0@hexun.com",
+        "created":"9/24/2018",
+        "last_connection":"2/18/2020",
+        "accounts":[
+            {
+                "account_id": "1",
+                "amount": 200.00,
+                "transactions_ids": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+
+                ]
+            },
+            {
+                "account_id": "2",
+                "amount": 1500,
+                "transactions_ids": [
+                    "6",
+                    "7"
+                ]
+            },
+            {
+                "account_id": "3",
+                "amount": -200,
+                "transactions_ids": [
+                    "8"
+                ]
+            }
+        ]
+    },
+    {
+        "user_id":"2",
+        "name":"Michel",
+        "email":"michel0@hexun.com",
+        "created":"12/2/2018",
+        "last_connection":"3/10/2020",
+        "accounts":[
+            {
+                "account_id": "4",
+                "amount": 150.00,
+                "transactions_ids": [
+                    "9",
+                    "10",
+                    "11"
+                ]
+            }
+        ]
+    }
+]
