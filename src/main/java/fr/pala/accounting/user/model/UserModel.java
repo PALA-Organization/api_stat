@@ -1,11 +1,12 @@
-package fr.pala.accounting.model;
+package fr.pala.accounting.user.model;
 
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import fr.pala.accounting.serializer.UserJsonSerializer;
+import fr.pala.accounting.user.serializer.UserJsonSerializer;
+import fr.pala.accounting.account.model.AccountModel;
 
 import java.util.List;
 

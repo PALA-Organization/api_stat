@@ -1,16 +1,14 @@
-package fr.pala.accounting.serializer;
+package fr.pala.accounting.user.serializer;
 
 import java.io.IOException;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 
-import fr.pala.accounting.model.AccountModel;
-import fr.pala.accounting.model.TransactionModel;
-import fr.pala.accounting.model.UserModel;
+import fr.pala.accounting.account.model.AccountModel;
+import fr.pala.accounting.user.model.UserModel;
 
 public class UserJsonSerializer extends StdSerializer<UserModel> {
     

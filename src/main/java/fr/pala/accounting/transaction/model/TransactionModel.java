@@ -1,4 +1,4 @@
-package fr.pala.accounting.model;
+package fr.pala.accounting.transaction.model;
 
 import lombok.Getter;
 import lombok.Setter;

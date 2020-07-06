@@ -1,7 +1,8 @@
 package fr.pala.accounting.dao;
 
-import fr.pala.accounting.model.AccountModel;
-import fr.pala.accounting.model.UserModel;
+import fr.pala.accounting.account.model.AccountModel;
+import fr.pala.accounting.user.dao.UserDAO;
+import fr.pala.accounting.user.model.UserModel;
 
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -50,7 +51,7 @@ public class UserDAOTest {
                 .then(ignoredInvocation -> Arrays.asList(new UserModel("", "Test", "test@test.fr", new Date(), new Date(), accounts),
                         new UserModel("", "Test", "test@test.fr", new Date(), new Date(), accounts)));
 
-        assertThat(userDAO.getAllUsers()).hasSize(2);
+        assertThat(userDAO.getAllUsers().get()).hasSize(2);
     }
 
     @Test
@@ -63,6 +64,6 @@ public class UserDAOTest {
         Mockito.when(mongoTemplate.findOne(query, UserModel.class))
                 .then(ignoredInvocation -> new UserModel("34234234234", "Test", "test@test.fr", new Date(), new Date(), accounts));
 
-        assertThat(userDAO.getUserById(user_id).getName()).isEqualTo("Test");
+        assertThat(userDAO.getUserById(user_id).get().getName()).isEqualTo("Test");
     }
 }

@@ -1,16 +1,19 @@
-package fr.pala.accounting.controller;
+package fr.pala.accounting.http.controller;
 
-import fr.pala.accounting.dao.UserDAO;
-import fr.pala.accounting.model.AccountModel;
-import fr.pala.accounting.model.UserModel;
+import fr.pala.accounting.user.dao.UserDAO;
+import fr.pala.accounting.account.model.AccountModel;
+import fr.pala.accounting.user.model.UserModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.error.ErrorController;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class HomeController implements ErrorController {
@@ -23,6 +26,12 @@ public class HomeController implements ErrorController {
     @GetMapping("/")
     public String writeHello() {
         return "Welcome home";
+    }
+
+    @GetMapping(path = "/test", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<UserModel> test() {
+        Optional<List<UserModel>> list = userDAO.getAllUsers();
+        return list.get();
     }
 
     @RequestMapping(value = PATH)

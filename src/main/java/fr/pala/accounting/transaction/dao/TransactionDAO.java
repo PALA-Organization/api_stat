@@ -1,7 +1,8 @@
-package fr.pala.accounting.dao;
+package fr.pala.accounting.transaction.dao;
 
-import fr.pala.accounting.model.AccountModel;
-import fr.pala.accounting.model.TransactionModel;
+import fr.pala.accounting.account.dao.AccountDAO;
+import fr.pala.accounting.account.model.AccountModel;
+import fr.pala.accounting.transaction.model.TransactionModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -29,7 +30,7 @@ public class TransactionDAO {
             return Optional.empty();
         }
 
-        ArrayList<String> transactions_ids = accountModel.get().getTransactions_ids().toList();
+        List<String> transactions_ids = accountModel.get().getTransactions_ids();
 
         for (String transactions_id : transactions_ids) {
             Query query = new Query();

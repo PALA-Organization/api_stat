@@ -1,7 +1,8 @@
-package fr.pala.accounting.dao;
+package fr.pala.accounting.account.dao;
 
-import fr.pala.accounting.model.AccountModel;
-import fr.pala.accounting.model.UserModel;
+import fr.pala.accounting.user.dao.UserDAO;
+import fr.pala.accounting.account.model.AccountModel;
+import fr.pala.accounting.user.model.UserModel;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -36,10 +37,14 @@ public class AccountDAO {
     }
 
     public Optional<AccountModel> getAccountOfUser(String user_id, String account_id) {
-        Optional<List<AccountModel>> accounts = getAllAccountsOfUsers(user_id);
-
+        Optional<List<AccountModel>> accounts = getAllAccountsOfUsers(user_id);      
         AccountModel accountResult = null;
-        for (AccountModel account : accounts) {
+
+        if(accounts.isEmpty()) {
+            return Optional.empty();
+        }
+
+        for (AccountModel account : accounts.get()) {
             if (account.getAccount_id().equals(account_id)) {
                 accountResult = account;
                 break;

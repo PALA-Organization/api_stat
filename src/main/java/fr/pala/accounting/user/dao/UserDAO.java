@@ -1,6 +1,6 @@
-package fr.pala.accounting.dao;
+package fr.pala.accounting.user.dao;
 
-import fr.pala.accounting.model.UserModel;
+import fr.pala.accounting.user.model.UserModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;

@@ -1,8 +1,11 @@
 package fr.pala.accounting.dao;
 
-import fr.pala.accounting.model.AccountModel;
-import fr.pala.accounting.model.TransactionModel;
-import fr.pala.accounting.model.UserModel;
+import fr.pala.accounting.account.dao.AccountDAO;
+import fr.pala.accounting.account.model.AccountModel;
+import fr.pala.accounting.transaction.dao.TransactionDAO;
+import fr.pala.accounting.transaction.model.TransactionModel;
+import fr.pala.accounting.user.dao.UserDAO;
+import fr.pala.accounting.user.model.UserModel;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -44,7 +47,7 @@ public class TransactionDAOTest {
         Mockito.when(mongoTemplate.findOne(query, UserModel.class))
                 .then(ignoredInvocation -> new UserModel("32352453234", "Test", "test@test.fr", new Date(), new Date(), accounts));
 
-        assertThat(transactionDAO.getAllTransactionsOfAccount(user_id, account_id)).hasSize(0);
+        assertThat(transactionDAO.getAllTransactionsOfAccount(user_id, account_id).get()).hasSize(0);
     }
 
     @Test
@@ -66,7 +69,7 @@ public class TransactionDAOTest {
         Mockito.when(mongoTemplate.findOne(query, UserModel.class))
                 .then(ignoredInvocation -> new UserModel("32352453234", "Test", "test@test.fr", new Date(), new Date(), accounts));
 
-        assertThat(transactionDAO.getAllTransactionsOfAccount(user_id, account_id)).hasSize(2);
+        assertThat(transactionDAO.getAllTransactionsOfAccount(user_id, account_id).get()).hasSize(2);
     }
 
     @Test
@@ -82,39 +85,7 @@ public class TransactionDAOTest {
         Mockito.when(mongoTemplate.findOne(query, TransactionModel.class))
                 .then(ignoredInvocation -> transaction);
 
-        assertThat(transactionDAO.getTransaction(transactionId)).isEqualTo(transaction);
+        assertThat(transactionDAO.getTransaction(transactionId).get()).isEqualTo(transaction);
     }
 
-
-    @Test
-    public void addTransactionTest() {
-
-        //parameters of addTransaction
-        String user_id = "12";
-        String account_id = "3234234";
-        TransactionModel transaction = new TransactionModel("223435345345", "Test", "Auchan",
-                "Test", new Date(), 33.70, "Test");
-
-        //Mock the account get
-        ArrayList<String> transactionsIds = new ArrayList<String>();
-        transactionsIds.add("235");
-        transactionsIds.add("444");
-        AccountModel account = new AccountModel(account_id, 234.55, transactionsIds);
-        Query query1 = new Query();
-        query1.addCriteria(Criteria.where("account_id").is(account_id));
-        Mockito.when(mongoTemplate.findOne(query1, AccountModel.class))
-                .then(ignoredInvocation -> account);
-
-        //mock the user get
-        ArrayList<AccountModel> accounts = new ArrayList<>();
-        accounts.add(account);
-        Query query = new Query();
-        query.addCriteria(Criteria.where("user_id").is(user_id));
-        Mockito.when(mongoTemplate.findOne(query, UserModel.class))
-                .then(ignoredInvocation -> new UserModel("32352453234", "Test", "test@test.fr", new Date(), new Date(), accounts));
-
-        Mockito.when(mongoTemplate.save(Mockito.any(TransactionModel.class))).thenReturn(transaction);
-
-        assertThat(transactionDAO.addTransaction(user_id, account_id, transaction).getTransaction_id()).isEqualTo("223435345345");
-    }
 }
