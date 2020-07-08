@@ -1,5 +1,6 @@
 package fr.pala.accounting.businessVolume.service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -8,35 +9,34 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import fr.pala.accounting.http.service.StringToDateService;
+import fr.pala.accounting.transaction.entity.TransactionEntity;
+
 
 @Service
 public class BusinessVolumeService {
 
     // private final Business
 
-    // public Double getBusinessVolumeOfAllAccounts(String userId, Date limiteDateEvaluation) throws RuntimeException {
-    //     Optional<List<AccountModel>> accounts = accountDAO.getAllAccountsOfUsers(userId);
-    //     ArrayList<List<TransactionModel>> transactionsOfAccounts = new ArrayList<>();
-    //     Double businessVolume = Double.valueOf(0);
+    public Double getBusinessVolume(List<TransactionEntity> transactions, Date startDate, Date endDate) throws RuntimeException {
+        Double businessVolume = Double.valueOf(0);
+        SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        System.out.println("PUTE");
+        StringToDateService converterStringDate = new StringToDateService(formater);
+        System.out.println("PUTE");
 
-    //     if(accounts.isEmpty()) {
-    //         throw new NoAccountException("No account for this user");
-    //     }
+        for (TransactionEntity transactionEntity : transactions) {
+            System.out.println("PUTE");
+            Date convertedDate = converterStringDate.mongoDateconvert(transactionEntity.getDate());
+            System.out.println("PUTE");
 
-    //     for (AccountModel account : accounts.get()) {
-    //         Optional<List<TransactionModel>> transactions = transactionDAO.getAllTransactionsOfAccount(userId, account.getTransaction_id());
-    //         // Date check
-    //         // transactions.filter(predicate)
-    //         transactionsOfAccounts.add(transactions.get());
-    //     }
+            if(convertedDate.compareTo(startDate) >= 0 && convertedDate.compareTo(endDate) <= 0) {
+                businessVolume += transactionEntity.getAmount();
+            }
+        }
 
-    //     for (List<TransactionModel> list : transactionsOfAccounts) {
-    //         businessVolume += list.stream().map(x -> x.getAmount()).reduce((x, y) -> x + y).get();
-    //     }
-        
-
-    //     return 0.00;
-    // }
+        return businessVolume;
+    }
 
     // public BusinessVolume getBusinessVolume(String userId, String accountId, Date limiteDateEvaluation) {
     //     // Optional<List<TransactionModel>> accountTransactions = transactionDAO.getAllTransactionsOfAccount(userId, accountId);

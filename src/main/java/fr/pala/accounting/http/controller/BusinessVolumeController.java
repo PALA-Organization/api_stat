@@ -12,12 +12,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.pala.accounting.businessVolume.service.BusinessVolumeService;
 import fr.pala.accounting.http.exception.InternalErrorException;
 import fr.pala.accounting.login.entity.Login;
 import fr.pala.accounting.transaction.entity.TransactionEntity;
 import fr.pala.accounting.transaction.request.TransactionRequest;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -28,19 +30,20 @@ import java.util.Optional;
 public class BusinessVolumeController implements ErrorController {
 
     private static final String PATH = "/error";
-    // private final BusinessVolumeService businessVolumeService;
+    private final BusinessVolumeService businessVolumeService;
     private final RestTemplateBuilder requestBuilder;
     private String accountingBaseUrl;
 
     public BusinessVolumeController() {
-        // this.businessVolumeService = new BusinessVolumeService();
+        this.businessVolumeService = new BusinessVolumeService();
         this.requestBuilder = new RestTemplateBuilder();
         this.accountingBaseUrl = System.getenv("API_ACCOUNTING_BASE_URL");
     }
 
     @PostMapping(path = "business-volume", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity getBusinessVolume(@RequestParam String accountId, @RequestBody Login login) throws RuntimeException {
+    public ResponseEntity getBusinessVolume(@RequestParam String accountId, @RequestParam Date startDate, @RequestParam Date endDate, @RequestBody Login login) throws RuntimeException {
         System.out.println("TEST");
+        System.out.println(startDate + " " + endDate);
         TransactionRequest request = new TransactionRequest(requestBuilder, login);
         System.out.println("TEST");
         List<TransactionEntity> result;
@@ -60,7 +63,7 @@ public class BusinessVolumeController implements ErrorController {
         // }
 
         // Double result = businessVolumeService.getBusinessVolumeOfAllAccounts(userId, new Date());
-        return new ResponseEntity<>(result, HttpStatus.OK);
+        return new ResponseEntity<>(this.businessVolumeService.getBusinessVolume(result, startDate, endDate), HttpStatus.OK);
     }
 
     

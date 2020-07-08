@@ -2,6 +2,7 @@ package fr.pala.accounting.transaction.request;
 
 import java.io.Serializable;
 import java.net.http.HttpResponse;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -80,9 +81,23 @@ public class TransactionRequest {
             throw new GetTransactionException("Failed to get data from account api");
         }
 
-        List<TransactionEntity> jsonObject = new Gson().fromJson(response.getBody(), (Class<List<TransactionEntity>>)(Class<?>)List.class);
+        ArrayList<TransactionEntity> listTransactions = new ArrayList<>();
+        TransactionEntity[] jsonObject = new Gson().fromJson(response.getBody(), TransactionEntity[].class);
+        
+        for (TransactionEntity transactionEntity : jsonObject) {
+            TransactionEntity currentEntity = new TransactionEntity(
+                transactionEntity.getId(), 
+                transactionEntity.getType(), 
+                transactionEntity.getShop_name(), 
+                transactionEntity.getShop_address(), 
+                transactionEntity.getDate(), 
+                transactionEntity.getAmount(), 
+                transactionEntity.getDescription()
+            );
+            listTransactions.add(currentEntity);
+        }
 
-        return  jsonObject;
+        return  listTransactions;
     }
 
     public TransactionEntity[] getRequestMultiWithParams(String path, List<String> parameters) {
