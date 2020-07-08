@@ -8,5 +8,6 @@ unset DB_PASSWORD
 unset DB_NAME
 unset DB_PORT
 unset DB_HOST
+unset API_ACCOUNTING_BASE_URL
 
-unset WEB_APP_PORT
+unset SERVER_PORT

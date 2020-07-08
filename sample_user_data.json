@@ -1,54 +1,54 @@
 [
     {
-        "user_id":"1",
         "name":"Kathy",
         "email":"kmoxsom0@hexun.com",
+        "password": "$2a$10$PD2IMUs8spFtT4GOA/ucxOrJuvtNX0iXwKXqNZIn6LEc2dmYIienG",
         "created":"9/24/2018",
         "last_connection":"2/18/2020",
         "accounts":[
             {
-                "account_id": "1",
-                "amount": 200.00,
+                "_id": ObjectId('5ef325ac9792693404c0bc72'),
+                "amount": 2284.00,
                 "transactions_ids": [
-                    "1",
-                    "2",
-                    "3",
-                    "4",
-                    "5"
+                    "5f05d20cfde8e792f4c4e837",
+                    "5f05d20cfde8e792f4c4e838",
+                    "5f05d20cfde8e792f4c4e839",
+                    "5f05d20cfde8e792f4c4e83a",
+                    "5f05d20cfde8e792f4c4e83b"
 
                 ]
             },
             {
-                "account_id": "2",
-                "amount": 1500,
+                "_id": ObjectId('5ef325ac9792693404c0bc73'),
+                "amount": 379.00,
                 "transactions_ids": [
-                    "6",
-                    "7"
+                    "5f05d20cfde8e792f4c4e83c",
+                    "5f05d20cfde8e792f4c4e83d"
                 ]
             },
             {
-                "account_id": "3",
-                "amount": -200,
+                "_id": ObjectId('5ef325ac9792693404c0bc74'),
+                "amount": 415.00,
                 "transactions_ids": [
-                    "8"
+                    "5f05d20cfde8e792f4c4e83e"
                 ]
             }
         ]
     },
     {
-        "user_id":"2",
         "name":"Michel",
         "email":"michel0@hexun.com",
+        "password": "$2a$10$PD2IMUs8spFtT4GOA/ucxOrJuvtNX0iXwKXqNZIn6LEc2dmYIienG",
         "created":"12/2/2018",
         "last_connection":"3/10/2020",
         "accounts":[
             {
-                "account_id": "4",
-                "amount": 150.00,
+                "_id": ObjectId('5ef325ac9792693404c0bc75'),
+                "amount": 128.00,
                 "transactions_ids": [
-                    "9",
-                    "10",
-                    "11"
+                    "5f05d20cfde8e792f4c4e83f",
+                    "5f05d20cfde8e792f4c4e840",
+                    "5f05d20cfde8e792f4c4e841"
                 ]
             }
         ]

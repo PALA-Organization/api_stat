@@ -1,104 +1,88 @@
 [
     {
-        "transaction_id": "1",
-        "type": "in",
-        "shop_name": "Sumbergebang",
-        "shop_address": "6 Holy Cross Center",
-        "date": "4/13/2020",
-        "amount": 50.00,
-        "description": "implement ubiquitous web-readiness"
-    }, 
-    {
-        "transaction_id": "2",
-        "type": "in",
-        "shop_name": "Lishu",
-        "shop_address": "39431 Fieldstone Junction",
-        "date": "7/29/2019",
-        "amount": 200.00,
-        "description": "reintermediate value-added bandwidth"
-    }, 
-    {
-        "transaction_id": "3",
-        "type": "out",
-        "shop_name": "Grytviken",
-        "shop_address": "62 Lake View Park",
-        "date": "11/16/2019",
-        "amount": 200.00,
-        "description": "repurpose clicks-and-mortar applications"
-    }, 
-    {
-        "transaction_id": "4",
-        "type": "out",
-        "shop_name": "Sabang",
-        "shop_address": "27 Badeau Drive",
-        "date": "11/18/2019",
-        "amount": 50.00,
-        "description": "transition clicks-and-mortar applications"
-    }, 
-    {
-        "transaction_id": "5",
-        "type": "in",
-        "shop_name": "Migori",
-        "shop_address": "2869 Maryland Place",
-        "date": "4/27/2020",
-        "amount": 200.00,
-        "description": "innovate impactful portals"
+        "type": "Add",
+        "shop_name": "Skinte",
+        "shop_address": "674 North Plaza",
+        "date": ISODate("2020-10-09T07:46:36Z"),
+        "amount": 660,
+        "description": "Passiflora bryonioides Kunth"
+    }, {
+        "type": "Add",
+        "shop_name": "Topicstorm",
+        "shop_address": "297 Waywood Junction",
+        "date": ISODate("2019-08-09T09:02:11Z"),
+        "amount": 204,
+        "description": "Lewisia maguirei A.H. Holmgren"
+    }, {
+        "type": "Add",
+        "shop_name": "Tagopia",
+        "shop_address": "578 Arkansas Point",
+        "date": ISODate("2019-10-12T20:43:49Z"),
+        "amount": 464,
+        "description": "Saxifraga nelsoniana D. Don ssp. porsildiana (Calder & Savile) Hultén"
+    }, {
+        "type": "Add",
+        "shop_name": "Omba",
+        "shop_address": "37745 Forster Way",
+        "date": ISODate("2020-02-21T04:17:34Z"),
+        "amount": 175,
+        "description": "Dicranum viride (Sull. & Lesq.) Lindb."
     },
-
+    
     {
-        "transaction_id": "6",
-        "type": "in",
-        "shop_name": "Sumbergebang",
-        "shop_address": "6 Holy Cross Center",
-        "date": "4/13/2020",
-        "amount": 550.00,
-        "description": "implement ubiquitous web-readiness"
+        "type": "Add",
+        "shop_name": "Agivu",
+        "shop_address": "11673 Iowa Drive",
+        "date": ISODate("2021-03-15T18:50:20Z"),
+        "amount": 57,
+        "description": "Mycomicrothelia subfallens (Müll. Arg.) D. Hawksw."
+    }, {
+        "type": "Add",
+        "shop_name": "Skajo",
+        "shop_address": "1 International Parkway",
+        "date": ISODate("2020-04-05T06:48:42Z"),
+        "amount": 415,
+        "description": "Phlox variabilis Brand"
     }, 
+    
     {
-        "transaction_id": "7",
-        "type": "in",
-        "shop_name": "Lishu",
-        "shop_address": "39431 Fieldstone Junction",
-        "date": "7/29/2019",
-        "amount": 950.00,
-        "description": "reintermediate value-added bandwidth"
-    },
-
-    {
-        "transaction_id": "8",
-        "type": "out",
-        "shop_name": "Sumbergebang",
-        "shop_address": "6 Holy Cross Center",
-        "date": "4/13/2020",
-        "amount": -200.00,
-        "description": "implement ubiquitous web-readiness"
-    },
-
-    {
-        "transaction_id": "9",
-        "type": "in",
-        "shop_name": "Sumbergebang",
-        "shop_address": "6 Holy Cross Center",
-        "date": "4/13/2020",
-        "amount": 50.00,
-        "description": "implement ubiquitous web-readiness"
-    },
-    {
-        "transaction_id": "10",
-        "type": "in",
-        "shop_name": "Sumbergebang",
-        "shop_address": "6 Holy Cross Center",
-        "date": "5/13/2020",
-        "amount": 50.00,
-        "description": "implement ubiquitous web-readiness"
+        "type": "Reverse",
+        "shop_name": "Oyope",
+        "shop_address": "4313 Grayhawk Alley",
+        "date": ISODate("2020-11-17T01:14:55Z"),
+        "amount": -393,
+        "description": "Crataegus macrosperma Ashe"
     }, 
+    
     {
-        "transaction_id": "11",
-        "type": "in",
-        "shop_name": "Sumbergebang",
-        "shop_address": "6 Holy Cross Center",
-        "date": "6/13/2020",
-        "amount": 50.00,
-        "description": "implement ubiquitous web-readiness"
+        "type": "Add",
+        "shop_name": "Youbridge",
+        "shop_address": "27 Susan Way",
+        "date": ISODate("2020-04-16T13:56:37Z"),
+        "amount": 444,
+        "description": "Acmella Rich. ex Pers."
+    }, 
+    
+    {
+        "type": "Reverse",
+        "shop_name": "Gabspot",
+        "shop_address": "37 Crownhardt Terrace",
+        "date": ISODate("2019-07-10T15:21:21Z"),
+        "amount": -96,
+        "description": "Morella ×macfarlanei (Youngken) Kartesz"
+    }, {
+        "type": "Add",
+        "shop_name": "Fatz",
+        "shop_address": "0 Tony Park",
+        "date": ISODate("2020-09-16T08:41:50Z"),
+        "amount": 896,
+        "description": "Romanzoffia Cham."
+    }, {
+        "type": "Add",
+        "shop_name": "Tekfly",
+        "shop_address": "34283 Butterfield Court",
+        "date": ISODate("2020-05-03T10:44:48Z"),
+        "amount": 380,
+        "description": "Camissonia chamaenerioides (A. Gray) P.H. Raven"
     }
 ]
