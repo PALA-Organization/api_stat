@@ -21,13 +21,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import fr.pala.accounting.http.request.HttpRequest;
-import fr.pala.accounting.http.request.HttpRequestGETMultiAnswer;
-import fr.pala.accounting.http.request.HttpRequestGETSingleAnswer;
 import fr.pala.accounting.login.entity.Login;
 import fr.pala.accounting.transaction.entity.TransactionEntity;
+import fr.pala.accounting.transaction.exception.AuthenticationFailedException;
 import fr.pala.accounting.transaction.exception.GetTransactionException;
 import lombok.Getter;
 import lombok.Setter;
@@ -56,19 +56,12 @@ public class TransactionRequest {
         this.loginPath = env.get("API_ACCOUNTING_BASE_URL") + "/login";
     }
 
-    public List<TransactionEntity> getRequestMulti(String path) {
-        System.out.println("SET JBKJBKJBKUBUKBKJBHKBHJB");
-        System.out.println(this.email + " " + this.password);
+    public List<TransactionEntity> getRequestMulti(String path) throws RuntimeException {
         String token = getLoginToken(this.email, this.password);
-        System.out.println(token);
-        System.out.println("SET JBKJBKJBKUBUKBKJBHKBHJB");
 
         this.headers.setBearerAuth(token);
-        System.out.println("SET JBKJBKJBKUBUKBKJBHKBHJB");
 
         HttpEntity entity = new HttpEntity(this.headers);
-
-        System.out.println("SET JBKJBKJBKUBUKBKJBHKBHJB");
 
         final ResponseEntity<String> response = this.restTemplate.exchange(
             path, 
@@ -104,14 +97,19 @@ public class TransactionRequest {
         return null;
     }
 
-    public String getLoginToken(String email, String password) {
+    public String getLoginToken(String email, String password) throws RuntimeException {
         Map<String, Object> map = new HashMap<>();
         map.put("email", email);
         map.put("password", password);
 
         HttpEntity<Map<String, Object>> entity = new HttpEntity<>(map, this.headers);
+        ResponseEntity<String> responseLogin;
 
-        ResponseEntity<String> responseLogin = this.restTemplate.postForEntity(this.loginPath, entity, String.class);
+        try {
+            responseLogin = this.restTemplate.postForEntity(this.loginPath, entity, String.class);
+        }catch(RestClientException execption) {
+            throw new AuthenticationFailedException("Failed to authenticate over authentication provider");
+        }
 
         return responseLogin.getHeaders().get("Authorization").get(0).split(" ")[1];
     }

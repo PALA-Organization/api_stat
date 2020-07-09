@@ -3,6 +3,8 @@ package fr.pala.accounting.http.service;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import fr.pala.accounting.http.exception.InternalErrorException;
+
 public class StringToDateService {
     private SimpleDateFormat formater;
     
@@ -10,7 +12,7 @@ public class StringToDateService {
         this.formater = formater;
     }
 
-    public Date mongoDateconvert(String dateString) {
+    public Date mongoDateconvert(String dateString) throws RuntimeException {
         Date result = new Date();
         String[] splitedResult = dateString.split("\\.");
         String toFormate = splitedResult[0];
@@ -18,7 +20,7 @@ public class StringToDateService {
             result = this.formater.parse(toFormate);
 
         }catch(Exception e) {
-            e.printStackTrace();
+            throw new InternalErrorException(e.getMessage());
         }
 
         return result;
