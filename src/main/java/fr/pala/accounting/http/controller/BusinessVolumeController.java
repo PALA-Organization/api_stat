@@ -62,7 +62,7 @@ public class BusinessVolumeController implements ErrorController {
         // }
 
         // Double result = businessVolumeService.getBusinessVolumeOfAllAccounts(userId, new Date());
-        return new ResponseEntity<>(this.businessVolumeService.getBusinessVolume(result, startDate, endDate) + "Hello", HttpStatus.OK);
+        return new ResponseEntity<>(this.businessVolumeService.getBusinessVolume(result, startDate, endDate), HttpStatus.OK);
     }
 
     
